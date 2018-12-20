@@ -49,6 +49,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler ,IPointerUpHandler, I
     {
         if (inputVector.x != 0)
         {
+            //Debug.Log("x = " + inputVector.x);
             return inputVector.x;
         }
         else
@@ -61,6 +62,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler ,IPointerUpHandler, I
     {
         if (inputVector.z != 0)
         {
+            //Debug.Log("z = " + inputVector.z);
             return inputVector.z;
         }
         else
@@ -69,5 +71,25 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler ,IPointerUpHandler, I
         }
     }
 
+    public Vector3 RestrictedMovement()
+    {
+        if (inputVector.z > 0 && Mathf.Abs(inputVector.z) > Mathf.Abs(inputVector.x))
+        {
+            return new Vector3(0, 0, inputVector.z);
+        }
+        else if (inputVector.z < 0 && Mathf.Abs(inputVector.z) > Mathf.Abs(inputVector.x))
+        {
+            return new Vector3(0, 0, inputVector.z);
+        }
+        else if (inputVector.x > 0 && Mathf.Abs(inputVector.x) > Mathf.Abs(inputVector.z))
+        {
+            return new Vector3(inputVector.x, 0, 0);
+        }
+        else if (inputVector.x < 0 && Mathf.Abs(inputVector.x) > Mathf.Abs(inputVector.z))
+        {
+            return new Vector3(inputVector.x, 0, 0);
+        }
 
+        return new Vector3(0, 0, 0);
+    }
 }
