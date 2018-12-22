@@ -86,4 +86,17 @@ public class Player : MonoBehaviour
         MoveDir = new Vector3(0, 0, 0);
         print("suelto");
     }
+
+    public bool PlayerIsMoving()
+    {
+        if(MoveDir != Vector3.zero)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
 }
