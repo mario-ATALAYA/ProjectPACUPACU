@@ -16,7 +16,7 @@ public class EnemyR : MonoBehaviour
     NavMeshAgent _navMeshAgent;
     GameObject _player, _detectionArea;
     Vector3 targetVector;
-
+    public float Speed, ChaseSpeed;
     public float waitTime;
     private float _waitTime;
 
@@ -44,20 +44,12 @@ public class EnemyR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (detectionZone != null)
-        {
-            Player = detectionZone.GetComponent<DetectionZone>().getPlayer();
-        }
-        else
-        {
-            detectionZone = this.transform.GetChild(0).gameObject;
-        }
-        */
+       
 
         switch (State)
         {
             case EnemyState.CHASE:
+                _navMeshAgent.speed = ChaseSpeed;
                 _detectionArea.GetComponent<Renderer>().material = detectionAreaColor[0];
 
                 if (_player != null)
@@ -67,6 +59,7 @@ public class EnemyR : MonoBehaviour
 
             break;
             case EnemyState.PATROLL:
+                _navMeshAgent.speed = Speed;
                 _detectionArea.GetComponent<Renderer>().material = detectionAreaColor[1];
 
                 if (_navMeshAgent.remainingDistance < 1)

@@ -1971,6 +1971,16 @@ Prefab:
       propertyPath: plane
       value: 
       objectReference: {fileID: 32468890}
+    - target: {fileID: 114427754338415354, guid: bf6a591882ea6e942bb5c99aff796213,
+        type: 2}
+      propertyPath: Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427754338415354, guid: bf6a591882ea6e942bb5c99aff796213,
+        type: 2}
+      propertyPath: ChaseSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf6a591882ea6e942bb5c99aff796213, type: 2}
   m_IsPrefabAsset: 0
